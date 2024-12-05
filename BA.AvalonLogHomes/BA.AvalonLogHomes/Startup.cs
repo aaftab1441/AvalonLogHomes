@@ -37,8 +37,8 @@ namespace BA.AvalonLogHomes
             // Or configure recaptcha via options
             services.AddRecaptcha(options =>
             {
-                options.SecretKey = "6LeeDsQZAAAAALAwSfikY6jqbRIqCJqsMkpFL9o9";
-                options.SiteKey = "6LeeDsQZAAAAAE5KDbeYZSTmjd4mBrF_SA_svGdc";
+                options.SecretKey = "SecretKey";
+                options.SiteKey = "SiteKey";
             });
         }
 
