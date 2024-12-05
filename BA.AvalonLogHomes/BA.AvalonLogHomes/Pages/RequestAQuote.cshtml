@@ -1,0 +1,366 @@
+﻿@page "/logs-homes-cabins-custom-quotes"
+@model BA.AvalonLogHomes.Pages.RequestAQuoteViewModel
+@using reCAPTCHA.AspNetCore
+@using reCAPTCHA.AspNetCore.Versions;
+@using Microsoft.Extensions.Options
+@inject IOptions<RecaptchaSettings> RecaptchaSettings
+@{
+    ViewData["Title"] = "Custom Log Home Quote";
+    ViewData["Description"] = "You will be contacted by one of our Avalon log home specialist to discuss your custom log or timber frame quote.";
+    ViewData["Keywords"] = "";
+}
+<div id="nav_left">
+    <partial name="_NavigationPrimaryPartial" />
+</div>
+<div id="content">
+    <partial name="_SandbagsPartial" />
+    <h1>
+        Custom Log Home Quote
+    </h1>
+    <p>
+        Please note that ALL of the required information must be filled out or your request will not be sent. Also you will be contacted by one of our log home specialist to discuss your custom log or timber frame quote.
+    </p>
+    <p>
+        Please provide the following contact information:
+        <br />
+        (* = Optional Field)
+    </p>
+    <div id="contactform">
+        @using (@Html.BeginForm(null, null, FormMethod.Post, new { id = "custom-quote", @class = "contact" }))
+        {
+            @Html.ValidationSummary(true);
+            <table style="margin-left: 230px;">
+                <tr>
+                    <td>
+                        Name
+                    </td>
+                    <td>
+                        <input asp-for="RequestAQuoteModel.xNVzAName" size="9" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Address
+                    </td>
+                    <td>
+                        <input asp-for="RequestAQuoteModel.Address" size="20" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        City
+                    </td>
+                    <td>
+                        <input asp-for="RequestAQuoteModel.City" size="12" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        State/Province
+                    </td>
+                    <td>
+                        <input asp-for="RequestAQuoteModel.State" size="2" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Zip/PostalCode
+                    </td>
+                    <td>
+                        <input asp-for="RequestAQuoteModel.ZIP" size="3" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        *Country
+                    </td>
+                    <td>
+                        <input asp-for="RequestAQuoteModel.Country" size="10" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Phone
+                    </td>
+                    <td>
+                        <input asp-for="RequestAQuoteModel.MUYPQPhone" size="10" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Fax
+                    </td>
+                    <td>
+                        <input asp-for="RequestAQuoteModel.Fax" size="10" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        *E-mail
+                    </td>
+                    <td>
+                        <input asp-for="RequestAQuoteModel.CsKTVEmail" size="20" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Best time to be contacted
+                    </td>
+                    <td>
+                        <input asp-for="RequestAQuoteModel.BestContactTime" size="12" />
+                    </td>
+                </tr>
+            </table>
+            <p>
+                Building Site City/State (if different from above): <input name="BuildingSite" size="40" />
+            </p>
+            <p>
+                <strong>1. When do you plan to begin building your log home?</strong>
+                <select asp-for="RequestAQuoteModel.BuildDate">
+                    <option>
+                        Please Choose One
+                    </option>
+                    <option value="Within 3 Months">
+                        Within 3 months
+                    </option>
+                    <option value="3-6 months">
+                        3-6 months
+                    </option>
+                    <option value="6-12 months">
+                        6-12 months
+                    </option>
+                    <option value="12-24 months">
+                        12-24 months
+                    </option>
+                    <option value="more the 24 months">
+                        More than 24 months
+                    </option>
+                </select>
+            </p>
+            <p>
+                <strong>2. Have you secured your financing or funding for this project?</strong> <input asp-for="RequestAQuoteModel.FundingSecured" type="radio" value="Yes" /> Yes <input for="RequestAQuoteModel.FundingSecured" type="radio" value="No" /> No
+            </p>
+            <p>
+                <strong>3. Which type of Avalon Log Home would you like us to quote for you?</strong>
+            </p>
+            <ul>
+                <li>
+                    <input asp-for="RequestAQuoteModel.TypeOfHome" type="radio" value="Standard Milled" /> Standard Milled (Select the specific plan below)
+                </li>
+                <li>
+                    <input asp-for="RequestAQuoteModel.TypeOfHome" type="radio" value="Custom_Milled" /> Custom Milled
+                </li>
+                <li>
+                    <input asp-for="RequestAQuoteModel.TypeOfHome" type="radio" value="Standard Handcrafted" /> Standard Handcrafted (Select the specific plan below)
+                </li>
+                <li>
+                    <input asp-for="RequestAQuoteModel.TypeOfHome" type="radio" value="Custom Handcrafted" /> Custom Handcrafted
+                </li>
+            </ul>
+            <p>
+                <strong><span style="font-size: small;">If the plan you want is not in the plan drop down list below, please just list it as text in the box below. Please indicate the plan name and listed square footage of that plan.</span></strong>
+            </p>
+            <p>
+                Plan (if applicable): <select asp-for="RequestAQuoteModel.FloorPlan">
+                    <option value="Alpine">
+                        Alpine
+                    </option>
+                    <option value="Aspen">
+                        Aspen
+                    </option>
+                    <option value="Aurora">
+                        Aurora
+                    </option>
+                    <option value="Birchwood">
+                        Birchwood
+                    </option>
+                    <option value="CedarCrest">
+                        CedarCrest
+                    </option>
+                    <option value="Cimmeron">
+                        Cimmeron
+                    </option>
+                    <option value="Clear Creek">
+                        Clear Creek
+                    </option>
+                    <option value="Deertrail">
+                        Deertrail
+                    </option>
+                    <option value="EagleNest">
+                        EagleNest
+                    </option>
+                    <option value="Edgewood">
+                        Edgewood
+                    </option>
+                    <option value="Elk Ridge">
+                        Elk Ridge
+                    </option>
+                    <option value="Fall Creek">
+                        Fall Creek
+                    </option>
+                    <option value="HeathRidge">
+                        HeathRidge
+                    </option>
+                    <option value="Lariat">
+                        Lariat
+                    </option>
+                    <option value="Las Alturas">
+                        Las Alturas
+                    </option>
+                    <option value="Maplewood">
+                        Maplewood
+                    </option>
+                    <option value="MeadowView">
+                        MeadowView
+                    </option>
+                    <option value="Mesa">
+                        Mesa
+                    </option>
+                    <option value="Montana">
+                        Montana
+                    </option>
+                    <option value="Mountain Top">
+                        Mountain Top
+                    </option>
+                    <option value="Nester">
+                        Nester
+                    </option>
+                    <option value="OakCrest">
+                        OakCrest
+                    </option>
+                    <option value="Park City">
+                        Park City
+                    </option>
+                    <option value="Peekskill">
+                        Peekskill
+                    </option>
+                    <option value="Pinehurst">
+                        Pinehurst
+                    </option>
+                    <option value="Pinewood">
+                        Pinewood
+                    </option>
+                    <option value="Ranch Suites">
+                        Ranch Suites
+                    </option>
+                    <option value="RidgeCrest">
+                        RidgeCrest
+                    </option>
+                    <option value="Rio Verde">
+                        Rio Verde
+                    </option>
+                    <option value="RiverBirch">
+                        RiverBirch
+                    </option>
+                    <option value="Saddlehorn">
+                        Saddlehorn
+                    </option>
+                    <option value="Sierra La Rama">
+                        Sierra La Rama
+                    </option>
+                    <option value="Snowflake">
+                        Snowflake
+                    </option>
+                    <option value="Springdale">
+                        Springdale
+                    </option>
+                    <option value="Spurcross">
+                        Spurcross
+                    </option>
+                    <option value="The Dechutes">
+                        The Dechutes
+                    </option>
+                    <option value="The Greylin">
+                        The Greylin
+                    </option>
+                    <option value="The Mackenzie">
+                        The Mackenzie
+                    </option>
+                    <option value="The Malheur">
+                        The Malheur
+                    </option>
+                    <option value="The Merced">
+                        The Merced
+                    </option>
+                    <option value="The Metolius">
+                        The Metolius
+                    </option>
+                    <option value="The Sages">
+                        The Sages
+                    </option>
+                    <option value="Tiburon">
+                        Tiburon
+                    </option>
+                    <option value="TimberLine">
+                        TimberLine
+                    </option>
+                    <option value="Vista">
+                        Vista
+                    </option>
+                    <option value="WhitePine">
+                        WhitePine
+                    </option>
+                    <option value="Willowcreek">
+                        Willowcreek
+                    </option>
+                </select>
+            </p>
+            <p>
+                If you wish to modify an existing plan, please describe the changes you require. (i.e. I would like to reduce the Tiburon to 4000 Sq. Ft, Would like a loft added to the Snowflake, etc.).
+            </p>
+            <p>
+                <textarea cols="40" asp-for="RequestAQuoteModel.DescriptionOfChanges" rows="6">
+</textarea>
+            </p>
+            <p>
+                If you wish to build from a custom design and have created sketches, drawings or plans, please fax them along with this form to <strong>Avalon Log Homes at 208-463-0532.</strong>
+            </p>
+            <p>
+                <strong>4. Which package option are your interested in?</strong>
+            </p>
+            <p>
+                <input asp-for="RequestAQuoteModel.PackageOption" type="radio" value="A - Log Wall &amp; Gable Package" /> Package A - Log&nbsp;Package
+                <br />
+                <input asp-for="RequestAQuoteModel.PackageOption" type="radio" value="B - Standard Weathertight Shell (Dry-In)" /> Package B/C - Lumber, ext doors &amp; windows to complete a total Standard Weathertight Shell (Dry-In)
+                <br />
+                <input asp-for="RequestAQuoteModel.PackageOption" type="radio" value="Turn-Key Quote" /> Turn-Key Quote - (Costs vary by location.)
+            </p>
+            <p>
+                Basement: <select asp-for="RequestAQuoteModel.BasementType">
+                    <option>
+                        Please Choose One
+                    </option>
+                    <option value="none">
+                        none
+                    </option>
+                    <option value="full">
+                        full
+                    </option>
+                    <option value="crawl">
+                        crawl
+                    </option>
+                    <option value="slab">
+                        slab
+                    </option>
+                </select>
+            </p>
+            <p>
+                <input asp-for="RequestAQuoteModel.PackageOption" type="radio" value="Other_Here_Described" />Other (Please Describe)
+            </p>
+            <p>
+                <textarea class="auto-1" cols="40" asp-for="RequestAQuoteModel.OtherDescription" rows="6">
+</textarea>
+            </p>
+            <p>
+                @(Html.Recaptcha<RecaptchaV3HiddenInput>(RecaptchaSettings.Value))
+                <input type="submit" value="Submit">
+            </p>
+            <div class="secondary-items">
+                <label for="Name">Name</label><input name="Name" type="text" autocomplete="off" />
+                <label for="Email">Email</label><input name="Email" type="text" autocomplete="off" />
+                <label for="Phone">Phone</label><input name="Phone" type="text" autocomplete="off" />
+                <label for="Comments">Comments</label><textarea name="Comments" autocomplete="off"></textarea>
+            </div>
+        }
+    </div>
+</div>

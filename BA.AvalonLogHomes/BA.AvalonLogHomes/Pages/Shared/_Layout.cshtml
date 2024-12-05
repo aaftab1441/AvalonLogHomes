@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Avalon Log Homes</title>
+    <meta name="description" content="@ViewData["Description"]">
+    <meta name="keywords" content="@ViewData["Keywords"]">
+    <script type="application/ld+json">
+        {"@@context":"http://schema.org","@@graph":[{"@@context":"http://schema.org","@@type":"WebSite","url":"http://www.avalonloghomes.com/","name":"Avalon Enterprises"},{"@@type":"http://schema.org/HomeAndConstructionBusiness","@@id":"http://www.avalonloghomes.com/","name":"Avalon Enterprises","description":"A local family owned fencing company that has been in the Treasure Valley since 1961.","image":"http://www.avalonloghomes.com/images/header-bathroom.jpg","url":"http://www.avalonloghomes.com/","logo":"http://www.avalonloghomes.com/images/logo.png","priceRange":"$$$ - $$$$$","telephone":"+12083756767"}]}
+    </script>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div id="container_overall">
+        <img id="tree" src="/images/tree.png" alt="" />
+        <div id="header_main">
+            <img src="/images/logo.png" id="logo" alt="Avalon Log Homes" />
+            <img id="banner_shadow" src="/images/shadow-460x180.png" alt="" />
+            <div id="banner">
+                <img src="/images/header-kitchen-2.jpg" id="kitchen-2" alt="" />
+                <img src="/images/header-stair-rail.jpg" id="stair-rail" alt="" />
+                <img src="/images/header-roof.jpg" id="roof" alt="" />
+                <img src="/images/header-dining.jpg" id="dining" alt="" />
+                <img src="/images/header-bathroom.jpg" id="bathroom" alt="" />
+                <img src="/images/header-entry.jpg" id="entry" alt="" />
+                <img src="/images/header-turret.jpg" id="turret" alt="" />
+                <img src="/images/header-stair-rail-2.jpg" id="stair-rail-2" alt="" />
+                <img src="/images/header-kitchen.jpg" id="kitchen" alt="" />
+            </div>
+        </div>
+        <div id="header_page">
+            <div id="nav_top">
+                <a href="/">
+                    Home
+                </a>
+                |
+                <a href="/logs-homes-cabins-custom-quotes">
+                    Request A Quote
+                </a>
+                |
+                <a href="/documents/2016-newsletter.pdf">
+                    Newsletter
+                </a>
+                |
+                <a href="/vendors-manufacturers">
+                    Vendor Links
+                </a>
+                |
+                <a href="/dealers-locations">
+                    Become a Dealer
+                </a>
+                |
+                <a href="/privacy">
+                    Privacy
+                </a>
+                |
+                <a href="/contact-information">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+        @RenderBody()
+
+        <div id="footer">
+            Copyright 2019, Avalon Enterprises
+        </div>
+    </div>
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
+        </script>
+    </environment>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="/js/bsn.Crossfader.js"></script>
+    <script type="text/javascript">
+        //<![CDATA[
+        var cf = new Crossfader(new Array('kitchen-2', 'stair-rail', 'roof', 'dining', 'bathroom', 'entry', 'turret', 'stair-rail-2', 'kitchen'), 500, 3000);
+//]]>
+    </script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
